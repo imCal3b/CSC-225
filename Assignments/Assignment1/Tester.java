@@ -87,10 +87,10 @@ public class Tester {
   public static void main(String[] args) {
     
     System.out.println("Initializing frogs...");
-    PrintTest("Test frog ordering", TestAddFrog(50)); //TODO: RETURN TO 1000
-    //PrintTest("Test group size()", TestAddFrogSize(1000));
-    //PrintTest("Halfgroup() even", TestHalfGroups(8));
-    //PrintTest("Halfgroup() odd", TestHalfGroups(9));
+    PrintTest("Test frog ordering", TestAddFrog(1000));
+    PrintTest("Test group size()", TestAddFrogSize(1000));
+    PrintTest("Halfgroup() even", TestHalfGroups(8));
+    PrintTest("Halfgroup() odd", TestHalfGroups(9));
 
     String[] f1 = new String[] {"A","B","C","D"};
     String[] f2 = new String[] {"B","A","C","D"};
@@ -102,7 +102,7 @@ public class Tester {
       g2.addFrog(new Frog(f2[i]));
     }
 
-    //PrintTest("FrogsEquals() basic test 1", TestFrogEquals(g1, g2, true));
+    PrintTest("FrogsEquals() basic test 1", TestFrogEquals(g1, g2, true));
 
     f1 = new String[] {"A","B","C","D","E","F","H","G"};
     f2 = new String[] {"O","N","M","L","K","J","I","H"};
@@ -114,7 +114,7 @@ public class Tester {
       g2.addFrog(new Frog(f2[i]));
     }
 
-    //PrintTest("FrogsEquals() basic test 2", TestFrogEquals(g1, g2, true));
+    PrintTest("FrogsEquals() basic test 2", TestFrogEquals(g1, g2, true));
 
     f1 = new String[] {"A","B","C","D","E","F"};
     f2 = new String[] {"F","G","H","I","J","K"};
@@ -126,7 +126,7 @@ public class Tester {
       g2.addFrog(new Frog(f2[i]));
     }
 
-    //PrintTest("FrogEquals() basic test 3", TestFrogEquals(g1, g2, false));
+    PrintTest("FrogEquals() basic test 3", TestFrogEquals(g1, g2, false));
 
     f1 = new String[] {"H","I","J","K","L","M","N","O"};
     f2 = new String[] {"H","I","J","K","A","B","C","D"};
@@ -138,7 +138,7 @@ public class Tester {
       g2.addFrog(new Frog(f2[i]));
     }
 
-    //PrintTest("FrogEquals() basic test 4", TestFrogEquals(g1, g2, true));
+    PrintTest("FrogEquals() basic test 4", TestFrogEquals(g1, g2, true));
 
     f1 = new String[] {"A","B"};
     f2 = new String[] {"A"};
@@ -152,7 +152,7 @@ public class Tester {
       }
     }
 
-    //PrintTest("FrogEquals() basic test 4", TestFrogEquals(g1, g2, false));
+    PrintTest("FrogEquals() basic test 5", TestFrogEquals(g1, g2, false));
   }
     
 
