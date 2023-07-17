@@ -160,21 +160,54 @@ public class GraphAlgorithms{
   }
 
 /*
- * Desc:  Radix Sort Algorithm.
+ * Desc:  Radix Sort Algorithm. The algorithm takes in a list of integers and sorts the elements
+ *        into buckets relative to the value at a given character index of the integer (ie. the
+ *        integer 123 has a value of 2 at char index [1]). The integers in the list are sorted
+ *        into buckets the numbers of times as the total number of digits in the largest integer.
+ *        The elements in the buckets are put back into the main list in order and re-sorted
+ *        based on the next character index until the most significant digit of all the integers
+ *        has been sorted.
+ * Helper Methods:  bucket(List<Integer> S, int i, PixelWriter writer) - Takes in the given list
+ *                      and specified character index value and sorts the elements into buckets 
+ *                      relative to the integers value at the char index. The elements are then
+ *                      added back into a list in order of the buckets.
  */
   public static List<Integer> RadixSort(List<Integer> S, PixelWriter writer) {
-    List[] buckets = new LinkedList[10];
-    for (int i=0; i<10; i++) buckets[i] = new LinkedList<Integer>();
+    String max = Integer.toString(Collections.max(S));
+    int d = max.length();
 
-    
+    for (int i=0; i<d; i++) { S = bucket(S, i, writer); }
+
+    drawSequence(S, writer);
     return S;
   }
 
-  private static List<Integer> bucket(List<Integer> S, int buckets, int mod) {
+  private static List<Integer> bucket(List<Integer> S, int i, PixelWriter writer) {
+    List<List<Integer>> buckets = new LinkedList<>();
+    for (int q=0; q<10; q++) buckets.add(new LinkedList<Integer>());
+
     for (int x : S)
     {
-
+      String int_val = Integer.toString(x);
+      if (int_val.length() - 1 < i) buckets.get(0).add(x);
+      else {
+        int index = (int_val.length() - 1) - i;
+        int temp = Character.getNumericValue(int_val.charAt(index));
+        buckets.get(temp).add(x);
+      }
     }
+
+    List<Integer> sorted_S = new LinkedList<Integer>();
+    for (int k=0; k<10; k++)
+    {
+      for (int x : buckets.get(k))
+      {
+        sorted_S.add(x);
+      }
+      drawSequence(sorted_S, writer);
+    }
+
+    return sorted_S;
   }
 
 //=============================================================================================
