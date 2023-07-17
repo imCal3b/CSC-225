@@ -85,7 +85,14 @@ public class GraphAlgorithms{
   }
 
 /*
- * Desc:  Quick Sort Algorithm.
+ * Desc:  Quick Sort Algorithm. Algorithm takes in a list of integers and recursively breaks it
+ *        down into a pivot value and two lists of integers lower and higher than the pivot. The
+ *        algorithm then rebuilds the main list by merging the lower elements, pivot, and higher
+ *        elements back together.
+ * Helper Methods:  quick_split(List<Integer> S, int pivot) - takes in an integer list and the pivot
+ *                      integer used to split the list into two.
+ *                  quick_merge(List<Integer> list1, List<Integer> List2, int pivot) - Takes in the 
+ *                      two sorted integer lists and the pivot point and merges them into one sorted list.
  */
   public static List<Integer> QuickSort(List<Integer> S, PixelWriter writer) {
     if (S.size() < 2) {
@@ -98,10 +105,10 @@ public class GraphAlgorithms{
     List<List<Integer>> lists = quick_split(S, pivot);
     List<Integer> list1 = QuickSort(lists.get(0), writer);
     List<Integer> list2 = QuickSort(lists.get(1), writer);
-    List<Integer> sorted_S = quick_merge(list1, list2);
+    List<Integer> sorted_S = quick_merge(list1, list2, pivot);
 
-    drawSequence(S, writer);
-    return S;
+    drawSequence(sorted_S, writer);
+    return sorted_S;
   }
 
   private static List<List<Integer>> quick_split(List<Integer> S, int pivot) {
@@ -109,11 +116,23 @@ public class GraphAlgorithms{
     List<Integer> list1 = new LinkedList<Integer>();
     List<Integer> list2 = new LinkedList<Integer>();
 
+    for (int i=0; i < S.size(); i++) {
+      if (S.get(i) < pivot) list1.add(S.get(i));
+      else list2.add(S.get(i));
+    }
+
+    lists.add(list1);
+    lists.add(list2);
+
     return lists;
   }
 
-  private static List<Integer> quick_merge(List<Integer> list1, List<Integer> List2) {
+  private static List<Integer> quick_merge(List<Integer> list1, List<Integer> List2, int pivot) {
     List<Integer> sorted_list = new LinkedList<Integer>();
+
+    sorted_list.addAll(list1);
+    sorted_list.add(pivot);
+    sorted_list.addAll(List2);
 
     return sorted_list;
   }
@@ -141,10 +160,21 @@ public class GraphAlgorithms{
   }
 
 /*
- * Desc:  Quick Sort Algorithm.
+ * Desc:  Radix Sort Algorithm.
  */
   public static List<Integer> RadixSort(List<Integer> S, PixelWriter writer) {
+    List[] buckets = new LinkedList[10];
+    for (int i=0; i<10; i++) buckets[i] = new LinkedList<Integer>();
+
+    
     return S;
+  }
+
+  private static List<Integer> bucket(List<Integer> S, int buckets, int mod) {
+    for (int x : S)
+    {
+
+    }
   }
 
 //=============================================================================================
